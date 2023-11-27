@@ -8,8 +8,6 @@ def run_chart_app() :
 
     st.subheader('차트 데이터')
 
-    st.text('단위 : 천원')
-
     df = pd.read_csv('./data/house.csv')
 
     column_list = df.columns[1: ]
@@ -35,5 +33,10 @@ def run_chart_app() :
     # 선택한 지역과 열의 데이터 추출
     selected_data = df[df['지역'].isin(selected_regions)][['지역'] + selected_columns].set_index('지역').transpose()
 
+    st.text('단위 : 천원')
+
     st.line_chart(selected_data)
-    
+
+    st.write('평균 가격:', selected_data.mean().mean())
+    st.write('중간값:', selected_data.median().median())
+    st.write('표준 편차:', selected_data.std().std())
