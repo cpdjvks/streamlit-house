@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-def run_chart_app() :
+def run_trend_app() :
 
-    st.subheader('차트 데이터')
+    st.subheader('지역별 추이')
 
     df = pd.read_csv('./data/house.csv')
 
@@ -36,7 +36,3 @@ def run_chart_app() :
     st.text('단위 : 천원')
 
     st.line_chart(selected_data)
-
-    st.write('평균 가격:', selected_data.mean().mean())
-    st.write('중간값:', selected_data.median().median())
-    st.write('표준 편차:', selected_data.std().std())
